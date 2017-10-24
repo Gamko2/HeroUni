@@ -2,16 +2,18 @@
 #include<stdio.h>
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
+vector <hero> v;
 
-hero array[4];
 
-hero::hero():hero("test",1,1) {
-	
+
+hero::hero() :hero("test", 1, 1) {
+
 }
 
-hero::hero(string name):hero(name,1,1) {
+hero::hero(string name) : hero(name, 1, 1) {
 
 }
 
@@ -19,6 +21,7 @@ hero::hero(string name, int age, float size) {
 	this->name = name;
 	this->size = size;
 	this->age = age;
+	
 }
 
 void hero::set_name(string name) {
@@ -46,7 +49,7 @@ int hero::get_age() {
 }
 
 float hero::calculate_hp() {
-	
+
 	int age = this->get_age();
 	if (age <= 3) {
 		float hp = this->get_size()*0.1f;
@@ -85,8 +88,8 @@ int hero::getCurrentHp() {
 }
 
 void hero::changeCurrentHp(int hp) {
-	
-	if ((currenthp + hp)<0) {
+
+	if ((currenthp + hp) < 0) {
 		cout << "HP kann nicht unter 0 fallen" << endl;
 		return;
 	}
@@ -95,9 +98,11 @@ void hero::changeCurrentHp(int hp) {
 		return;
 	}
 	currenthp = currenthp + hp;
-	cout << "Die HP von " << this->get_name() <<  " beträgt: " << currenthp << endl;
+	cout << "Die HP von " << this->get_name() << " beträgt: " << currenthp << endl;
 	return;
 }
+
+
 
 bool operator==(hero &hero1, hero &hero2)
 {
@@ -119,24 +124,26 @@ std::ostream& operator<< (std::ostream &out, hero hero) {
 
 
 
-		bool operator!=(hero &hero1, hero &hero2) {
-			if ((hero1.getHp() == hero2.getHp()) && (hero1.get_age() == hero2.get_age()) && (hero1.get_name() == hero2.get_name()) && (hero1.get_size() == hero2.get_size()))
-			{
-				return false;
-			}
-			else {
-				return true;
-			}
+bool operator!=(hero &hero1, hero &hero2) {
+	if ((hero1.getHp() == hero2.getHp()) && (hero1.get_age() == hero2.get_age()) && (hero1.get_name() == hero2.get_name()) && (hero1.get_size() == hero2.get_size()))
+	{
+		return false;
+	}
+	else {
+		return true;
+	}
 
+}
+
+bool compare(hero hero) {
+	v.push_back(hero);
+	for (int i = 0; i < v.size()-1; i++) {
+		if (v[i] == hero) {
+			cout << "Duplicate" << endl;
+			v.pop_back();
+			return false;
 		}
-
-		/*bool compare(hero hero) {
-			for (int i = 0; i < sizeof(array); i++) {
-				if (hero == array[i]) {
-					cout << "No duplicate heroes possible" << endl;
-					return false;
-				}
-			}
-			cout << "hero created" << endl;
-			return true;
-		}*/
+	}
+	cout << "no duplicate"<<endl;
+		return true;
+}
