@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "hero.h"
+#include <vector>
 
 using namespace std;
 
@@ -11,13 +12,14 @@ using namespace std;
 
 
 int main(){
-	hero array[4];
+	vector <hero> v;
 	hero hero1("Klaus", 42, 1.76);
+	compare(hero1);
 	hero hero2("Dieter", 65, 192);
+	compare(hero2);
 	hero hero3("Dieter", 65, 192);
-	array[0] = hero1;
-	array[1] = hero2;
-	array[2] = hero3;
+	compare(hero3);
+	
 	
 	cout << hero2.calculate_hp() << endl;
 	cout << hero2.getCurrentHp() << endl;
