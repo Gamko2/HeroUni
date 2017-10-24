@@ -30,14 +30,15 @@ public:
 	int getCurrentHp();
 	void changeCurrentHp(int hp);
 	friend std::ostream& operator<< (std::ostream &out, hero hero);
-	bool compare(hero hero);
+	
 	
 	
 
 
 };
 
-bool operator!= (hero &hero1, hero &hero2);
-bool operator== (hero &hero1, hero &hero2);
+bool compare(hero hero);
+
+
 
 #endif // !HERO_H
