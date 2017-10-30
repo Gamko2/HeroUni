@@ -64,7 +64,7 @@ float hero::calculate_hp() {
 		return maxhp;
 	}
 
-	else if (age <= 16 && age <= 60) {
+	else if (age >= 16 && age <= 60) {
 		float hp = this->get_size() *2.0f;
 		maxhp = int(hp);
 		currenthp = maxhp;
@@ -147,3 +147,21 @@ bool compare(hero hero) {
 	cout << "no duplicate"<<endl;
 		return true;
 }
+
+bool hero::getStatus() {
+	return status;
+}
+
+void hero::setStatus(bool status) {
+	this->status = status;
+}
+
+
+int hero::getDMG() {
+	return 0;
+}
+
+string hero::getRasse() {
+	return "Super-Duper Hero";
+}
+
