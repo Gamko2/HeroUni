@@ -8,12 +8,13 @@ using namespace std;
 
 class hero {
 
-private:
+protected:
 	string name;
 	int currenthp;
 	int maxhp;
 	int age;
 	float size;
+	bool status;
 
 public:
 	hero();
@@ -27,9 +28,13 @@ public:
 	void set_age(int age);
 	float calculate_hp();
 	int getHp();
-	int getCurrentHp();
+	virtual int getCurrentHp();
 	void changeCurrentHp(int hp);
 	friend std::ostream& operator<< (std::ostream &out, hero hero);
+	bool getStatus();
+	void setStatus(bool status);
+	virtual string getRasse();
+	virtual int getDMG();
 	
 	
 	
